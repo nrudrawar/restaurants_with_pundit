@@ -17,12 +17,16 @@
         <td><%= restaurant.name %></td>
         <td><%= restaurant.user_id %></td>
         <td><%= link_to 'Show', restaurant %></td>
-        <% if policy(restaurant).edit? %>
-          <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
-        <% end %>
-        <% if policy(restaurant).destroy? %>
-          <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
+        <td>
+          <% if policy(restaurant).update? %>
+            <%= link_to 'Edit', edit_restaurant_path(restaurant) %>
+          <% end %>
+        </td>
+        <td>
+          <% if policy(restaurant).destroy? %>
+            <%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
